@@ -10,9 +10,6 @@
         "src": "next.config.js",
         "use": "@vercel/next"
       }
-    ],
-    "hooks": {
-      "post-build": "npm run seed"
-    }
+    ]
   }
   
