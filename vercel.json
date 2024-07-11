@@ -1,8 +1,8 @@
 {
     "build": {
       "env": {
-        "UPSTASH_REDIS_REST_URL":"UPSTASH_VECTOR_REST_URL",
-        "UPSTASH_REDIS_REST_TOKEN":"UPSTASH_VECTOR_REST_TOKEN"
+        "UPSTASH_REDIS_REST_URL":"https://probable-cow-70874-eu1-vector.upstash.io",
+        "UPSTASH_REDIS_REST_TOKEN":"ABYFMHByb2JhYmxlLWNvdy03MDg3NC1ldTFhZG1pbk16STFPRFkzWXpNdFlXVTVZaTAwTWpreUxUazBNakl0WmpGaVpUYzRPRFZpWlRJdw=="
       }
     },
     "builds": [
