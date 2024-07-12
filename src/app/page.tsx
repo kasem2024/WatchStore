@@ -32,7 +32,7 @@ export default function Home() {
   const {data:products , isLoading , refetch} = useQuery({
     queryKey:['products'],
     queryFn:async()=>{
-      const  {data} = await axios.post<QueryResult<TProduct>[]>(`${process.env.URL}`,{
+      const  {data} = await axios.post<QueryResult<TProduct>[]>("https://watch-store-rouge.vercel.app/api/products",{
         filter:{
           sort:filter.sort,
           color:filter.color,
