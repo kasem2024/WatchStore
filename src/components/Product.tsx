@@ -28,13 +28,17 @@ const Product = ({product }:{product :TProduct}) => {
         >
           {product.name}
         </CardItem>
-        <CardItem
+        <div>
+      {product.price}{" "}$
+      </div>
+       
+      </div>
+      <CardItem
           translateZ={20}
           className="px-4 py-2 rounded-xl bg-violet-700 dark:bg-white dark:text-black text-white text-xs font-bold"
         >
            Size {product.size.toUpperCase()} , {product.color}
         </CardItem>
-      </div>
     </CardBody>
   </CardContainer>
    
