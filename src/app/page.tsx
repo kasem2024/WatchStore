@@ -15,6 +15,7 @@ import { useState } from "react";
 import debounce from 'lodash.debounce';
 import EmptyState from "@/components/EmptyState";
 import Filters from "@/components/Filters";
+import { Product3DCard } from "@/components/Product3DCard";
 const SORT_OPTIONS = [
   {name:'None' , value:'none'},
   {name:'Price:Low to High' , value:'price-asc'},
@@ -47,27 +48,7 @@ export default function Home() {
   
   const onSubmit = ()=> refetch()
   const _debounceSubmit = debounce(onSubmit , 400)
-  const applyArrayFilter  = ({category ,value }:{
-    category:keyof Omit<typeof filter , 'price' | 'sort'>,
-    value:string,
-  })=>{
-    const isFilterApplyed = filter[category].includes(value as never);
-    if(isFilterApplyed){
-        setFilter((prev)=>({
-          ...prev,
-          [category]:filter[category].filter((v)=>v!==value)
-         }))
-    }else{
-        setFilter((prev)=>({
-          ...prev,
-          [category]:[...filter[category] , value]
-        }))
-    }
-    _debounceSubmit()
-    
-  }
-  const minPrice = Math.min(filter.price.range[0] , filter.price.range[1]);
-  const maxPrice = Math.max(filter.price.range[0] , filter.price.range[1]);
+  
   console.log(filter)
   return (
    <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -115,7 +96,10 @@ export default function Home() {
                isLoading? new Array(12).fill(null).map((_,i)=>(
                 <ProductSkeleton key={i}/>
                )):products && products.length === 0 ?<EmptyState/>:products?.map((product, idx)=>(
-                <Product key={idx} product={product.metadata!}/>
+              <>
+                  <Product key={idx} product={product.metadata!}/>
+                  <Product3DCard/>
+              </>
               ))
                }
           </ul>
