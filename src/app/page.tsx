@@ -15,7 +15,7 @@ import { useState } from "react";
 import debounce from 'lodash.debounce';
 import EmptyState from "@/components/EmptyState";
 import Filters from "@/components/Filters";
-import { Product3DCard } from "@/components/Product3DCard";
+
 const SORT_OPTIONS = [
   {name:'None' , value:'none'},
   {name:'Price:Low to High' , value:'price-asc'},
@@ -91,18 +91,18 @@ export default function Home() {
           {
             mobile?<div className="lg:hidden"><Filters refetch={refetch} filter={filter} setFilter={setFilter}/></div>:''
           }
-          <ul className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6">
                {
                isLoading? new Array(12).fill(null).map((_,i)=>(
                 <ProductSkeleton key={i}/>
                )):products && products.length === 0 ?<EmptyState/>:products?.map((product, idx)=>(
               <>
                   <Product key={idx} product={product.metadata!}/>
-                  <Product3DCard/>
+              
               </>
               ))
                }
-          </ul>
+          </div>
       </div>
     </section>
    </main> 
